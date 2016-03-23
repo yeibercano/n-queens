@@ -80,24 +80,41 @@
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
       // return false; // fixme
+      // console.log("!!!!!!! When has Row Conflict is called, this.rows is ", this.rows());
+     // iterate through each row
+        // console.log('currentRow is:', this.rows);
 
-      // create a flag to rowPopulated = false
-      // use _.each to go through each item in this row
-        // if item[i] === 1
-          // change rowPopulated to true
-      // return the rowPopulated
-     console.log('board row', rowIndex)
-      //return result of underscore _.contains
-     return _.contains(this[rowIndex], 1 );
+      var conflict = false;
+      var currentRow = this.rows()[rowIndex];
+      console.log('currentRow is  ', currentRow);
 
+        for (var i = 0; i < currentRow.length; i++) {
+          if(currentRow[i] === 1) {
+            conflict = true;
+          }  
+        }
+
+      //return flag
+      return conflict;
+      
+        // return _.contains(this, this.hasRowConflictAt());
+       // check if row contains an array that contains the value of 1
+     
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      // return false; // fixme
+      console.log('this when we run Any Row Conlicts is ', this);
+      // Iterate through each row of the board
+        // for each row, run hasRowConflictAt
 
-
-
+      // collects all rows
+      var rows = this.rows();
+      for (var i = 0; i < rows.length; i++) {
+        console.log('this should be a row:', rows[i]);
+        this.hasRowConflictAt(rows[i]);
+      }
     },
 
 
