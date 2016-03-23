@@ -79,12 +79,25 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      // return false; // fixme
+
+      // create a flag to rowPopulated = false
+      // use _.each to go through each item in this row
+        // if item[i] === 1
+          // change rowPopulated to true
+      // return the rowPopulated
+     console.log('board row', rowIndex)
+      //return result of underscore _.contains
+     return _.contains(this[rowIndex], 1 );
+
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
       return false; // fixme
+
+
+
     },
 
 
