@@ -166,28 +166,20 @@
       // return hasFoundAConflict;
       // console.log("HELLLOOOOOOOOOOOOOOO")
       // return this.hasRowConflictAt(colIndex);
-      var hasBeenFoundTimes = 0;
-      var conflict = false; 
+      // var hasBeenFoundTimes = 0;
+      // var conflict = false; 
 
       //create an array to store colum copies
       var arrayCopy = [];
       var board = this.rows();
       // iterate through the rows
       for (var i = 0; i < board.length; i++) {
-          //push into the arrayCopy the first index of each array
-          console.log(board[i][colIndex]);
-          arrayCopy.push(board[i][colIndex]);
+      //push into the arrayCopy the first index of each array
+        console.log('board[i][colIndex]:', board[i][colIndex]);
+        // if( )
+        arrayCopy.push(board[i][colIndex]);
       }
-      for (var i = 0; i < arrayCopy.length; i++) {
-        if(arrayCopy[i] === 1){
-          hasBeenFoundTimes ++;
-        }
-      }
-
-      if(hasBeenFoundTimes > 1 ) {
-        conflict = true;
-      }
-      return conflict;
+      return this.hasRowConflictAt(arrayCopy);
     },
 
 
