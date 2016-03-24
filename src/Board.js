@@ -82,39 +82,66 @@
       // return false; // fixme
       // console.log("!!!!!!! When has Row Conflict is called, this.rows is ", this.rows());
      // iterate through each row
-        // console.log('currentRow is:', this.rows);
 
-      var conflict = false;
-      var currentRow = this.rows()[rowIndex];
-      console.log('currentRow is  ', currentRow);
+    // first implementation
+    // var conflict = false;
+    // var rows = this.rows();
+    // for (var i = 0; i < rows.length; i++) {
+    //   for (var j = 0; j < rows[i].length; j++) {
+    //     if(rows[i][j] === 1) {
+    //       conflict = true
+    //     }
+    //   };
+    // };
 
-        for (var i = 0; i < currentRow.length; i++) {
-          if(currentRow[i] === 1) {
-            conflict = true;
-          }  
-        }
+    // return conflict;
+    var hasBeenFoundTimes = 0;
+    var conflict = false;
 
-      //return flag
-      return conflict;
-      
-        // return _.contains(this, this.hasRowConflictAt());
-       // check if row contains an array that contains the value of 1
+    // console.log('row Index for some reason is  ', rowIndex);
+
+   // console.log("we haven't incremented i!!!!!!!!! it's now: ", i);
+    for (var i = 0; i < rowIndex.length; i++) {
+      // console.log("item we're seeing now at this i is", rowIndex[i]);
+      if(rowIndex[i] === 1) {
+        hasBeenFoundTimes ++;
+        // console.log('hasBeenFoundTimes:', hasBeenFoundTimes)
+      }
+    }
+    if(hasBeenFoundTimes > 1){
+      // console.log("!!!!!!!!!!!!!!! the this right now is ", this)
+      conflict = true;
+      // console.log('it executes:',conflict);
+    }  
+
+  //return flag
+  return conflict;
+  
+    // return _.contains(this, this.hasRowConflictAt());
+   // check if row contains an array that contains the value of 1
      
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
       // return false; // fixme
-      console.log('this when we run Any Row Conlicts is ', this);
-      // Iterate through each row of the board
-        // for each row, run hasRowConflictAt
+      // console.log('this when we run Any Row Conlicts is ', this);
+      // // Iterate through each row of the board
+      //   // for each row, run hasRowConflictAt
 
-      // collects all rows
+      // // collects all rows
+      var result = false;
       var rows = this.rows();
+      // console.log('all rows:', rows)
       for (var i = 0; i < rows.length; i++) {
-        console.log('this should be a row:', rows[i]);
-        this.hasRowConflictAt(rows[i]);
+        // console.log('*****this should be a row:', rows[i]);
+        if(this.hasRowConflictAt(rows[i])){
+          result = true;
+        }
+        // console.log("when we call ANYANYANYANY conflicts, this is", this)
+        // this.hasAnyRowConflicts.call(this, rows[i]);
       }
+      return result;
     },
 
 
@@ -124,12 +151,59 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      // return false; // fixme
+      // var hasBeenFoundThisManyTimes = 0;
+      // var hasFoundAConflict = false;
+      // for(var i = 0; i < rows.length; i++){
+      //   // console.log("i is ", i);
+      //   // console.log();
+      //   // console.log("$$$$$$$$$$ when has Column Conflict, rows[i][colIndex] is ", rows[i][colIndex])];
+      //   if(rows[i][colIndex] === 1){
+      //     hasBeenFoundThisManyTimes ++;
+      //   }
+      // }
+      // // invoke has row conflict at every column index
+      // return hasFoundAConflict;
+      // console.log("HELLLOOOOOOOOOOOOOOO")
+      // return this.hasRowConflictAt(colIndex);
+      var hasBeenFoundTimes = 0;
+      var conflict = false; 
+
+      //create an array to store colum copies
+      var arrayCopy = [];
+      var board = this.rows();
+      // iterate through the rows
+      for (var i = 0; i < board.length; i++) {
+          //push into the arrayCopy the first index of each array
+          console.log(board[i][colIndex]);
+          arrayCopy.push(board[i][colIndex]);
+      }
+      for (var i = 0; i < arrayCopy.length; i++) {
+        if(arrayCopy[i] === 1){
+          hasBeenFoundTimes ++;
+        }
+      }
+
+      if(hasBeenFoundTimes > 1 ) {
+        conflict = true;
+      }
+      return conflict;
     },
+
+
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
+      // var rows = this.rows();
       return false; // fixme
+      // // console.log('colIndex :', colIndex)
+      // for(var i = 0; i < rows.length; i++){
+      //   }
+      // if(hasBeenFoundThisManyTimes > 1){
+      //   hasFoundAConflict = true;
+      // }
+
+
     },
 
 
