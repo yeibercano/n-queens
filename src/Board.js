@@ -171,18 +171,33 @@
       
       //Option 1
       // create an array to store colum copies
-      var column = [];
+      // var column = [];
+      // var board = this.rows();
+      // // iterate through the rows
+      // for (var i = 0; i < board.length; i++) {
+      // //push into the column the first index of each array
+      //   // console.log('board[i][colIndex]:', board[i][colIndex]);
+      //   // if( )
+      //   column.push(board[i][colIndex]);
+      // }
+      // // console.log("$$$$$$$$$ the column copy at the end of hasColConf is ", column);
+      // // console.log("********* this at the end of hasColConflictAt", this);
+      // return this.hasRowConflictAt(column);
+
+      //option 2
+      var counter = 0;
       var board = this.rows();
-      // iterate through the rows
-      for (var i = 0; i < board.length; i++) {
-      //push into the column the first index of each array
-        // console.log('board[i][colIndex]:', board[i][colIndex]);
-        // if( )
-        column.push(board[i][colIndex]);
+      _.each(board, function(row){
+        if(row[colIndex] === 1) {
+          counter ++;
+        }
+      });
+
+      if(counter > 1){
+        return true;
+      } else {
+        return false;
       }
-      // console.log("$$$$$$$$$ the column copy at the end of hasColConf is ", column);
-      // console.log("********* this at the end of hasColConflictAt", this);
-      return this.hasRowConflictAt(column);
    
     },
 
