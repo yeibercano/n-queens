@@ -168,33 +168,45 @@
       // return this.hasRowConflictAt(colIndex);
       // var hasBeenFoundTimes = 0;
       // var conflict = false; 
-
-      //create an array to store colum copies
-      var arrayCopy = [];
+      
+      //Option 1
+      // create an array to store colum copies
+      var column = [];
       var board = this.rows();
       // iterate through the rows
       for (var i = 0; i < board.length; i++) {
-      //push into the arrayCopy the first index of each array
-        console.log('board[i][colIndex]:', board[i][colIndex]);
+      //push into the column the first index of each array
+        // console.log('board[i][colIndex]:', board[i][colIndex]);
         // if( )
-        arrayCopy.push(board[i][colIndex]);
+        column.push(board[i][colIndex]);
       }
-      return this.hasRowConflictAt(arrayCopy);
+      // console.log("$$$$$$$$$ the column copy at the end of hasColConf is ", column);
+      // console.log("********* this at the end of hasColConflictAt", this);
+      return this.hasRowConflictAt(column);
+   
     },
 
 
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      // var rows = this.rows();
-      return false; // fixme
-      // // console.log('colIndex :', colIndex)
-      // for(var i = 0; i < rows.length; i++){
-      //   }
-      // if(hasBeenFoundThisManyTimes > 1){
-      //   hasFoundAConflict = true;
-      // }
-
+      // create a hasBeenFound flag set 
+      // create a variable to represent the entire board
+      var board = this.rows();
+      // for loop to increment colIndex
+      for (var i = 0; i < board.length; i++) {
+        if(this.hasColConflictAt(i)) {
+          return true;
+        } else {
+          return false
+        }
+      }
+        // for each col Index i starting at 0
+          // call hasColConflict(i)
+            // if current column i has a conflict
+              // return conflict is true
+            // else
+              // increment i to check  next column
 
     },
 
