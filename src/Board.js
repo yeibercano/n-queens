@@ -244,6 +244,7 @@
           // increment counter
           counter ++;
         }
+        majorDiagonalColumnIndexAtFirstRow ++;
       }
       // check if counter is > 1 
       if(counter > 1){
@@ -260,9 +261,10 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      // return false; // fixme
       // declare a variable for col --> var colums;
       // console.log('hasAnyMajorDiagonalConflicts')
+      console.log(this)
       var col;
       //declare a variable for rows
       var row; 
@@ -272,15 +274,18 @@
       for (row = 0; row < board.length; row++) {
            //nested for loop for columns (var col = 0; col board[row].length)
         for (col = 0; col < board[row].length; col++) {
+          console.log("!!!!!!!!!!!!!!!!! row is ", board[row]);
+          console.log(" ******** col is", board[row][col]);
+
              //check if true invoking hasMajorDiagonalConflictAt(board[row][col])
-          if(hasMajorDiagonalConflictAt(board[row][col])) {
-          //return  true;
-            return true;
-          } else {
-             // otherwise flase
-            return false;
-          }
         }
+        // if(this.hasMajorDiagonalConflictAt(board[row][col])) {
+        //   //return  true;
+        //   return true;
+        // } else {
+        //    // otherwise flase
+        //   return false;
+        // }
       }
 
       //option 2
